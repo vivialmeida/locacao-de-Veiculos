@@ -12,8 +12,8 @@ public class Sede {
     private String telefone;
     private String nomeDoGerente;
     private float multaPorAtraso;
-    private List<Carro> carrosDaSede;
-    private List<Reserva> reservasDaSede;
+    private List<Carro> carros;
+    private List<Reserva> reservas;
 
 
     @Id
@@ -67,21 +67,35 @@ public class Sede {
         this.multaPorAtraso = multaPorAtraso;
     }
 
+    @OneToMany
+    public List<Carro> getCarros() {
+        return carros;
+    }
+
+    public void setCarros(List<Carro> carros) {
+        this.carros = carros;
+    }
+
+    @OneToMany
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Sede sedes = (Sede) o;
-        return Float.compare(sedes.multaPorAtraso, multaPorAtraso) == 0 &&
-                Objects.equals(nome, sedes.nome) &&
-                Objects.equals(endereco, sedes.endereco) &&
-                Objects.equals(telefone, sedes.telefone) &&
-                Objects.equals(nomeDoGerente, sedes.nomeDoGerente);
+        Sede sede = (Sede) o;
+        return codigoSede == sede.codigoSede;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, endereco, telefone, nomeDoGerente, multaPorAtraso);
+        return Objects.hash(codigoSede);
     }
 }
 

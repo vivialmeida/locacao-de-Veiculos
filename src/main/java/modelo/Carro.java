@@ -4,6 +4,8 @@ package modelo;
 import com.sun.istack.NotNull;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Objects;
 
 @Entity
@@ -14,9 +16,9 @@ public class Carro {
     private String ano;
     private float Km;
     private String descricao;
-    private ClasseDeCarro classeDoCarro;
+    private ClasseDeCarro classeDeCarro;
 
-    @NotNull
+    @Id @NotNull
     public String getPlaca() {
         return placa;
     }
@@ -57,29 +59,25 @@ public class Carro {
         this.descricao = descricao;
     }
 
-    public ClasseDeCarro getClasseDoCarro() {
-        return classeDoCarro;
+    @OneToOne
+    public ClasseDeCarro getClasseDeCarro() {
+        return classeDeCarro;
     }
 
-    public void setClasseDoCarro(ClasseDeCarro classeDoCarro) {
-        this.classeDoCarro = classeDoCarro;
+    public void setClasseDeCarro(ClasseDeCarro classeDeCarro) {
+        this.classeDeCarro = classeDeCarro;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Carro carros = (Carro) o;
-        return Objects.equals(placa, carros.placa) &&
-                Objects.equals(modelo, carros.modelo) &&
-                Objects.equals(ano, carros.ano) &&
-                Objects.equals(Km, carros.Km) &&
-                Objects.equals(descricao, carros.descricao) &&
-                classeDoCarro == carros.classeDoCarro;
+        Carro carro = (Carro) o;
+        return placa.equals(carro.placa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(placa, modelo, ano, Km, descricao, classeDoCarro);
+        return Objects.hash(placa);
     }
 }

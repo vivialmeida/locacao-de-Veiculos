@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Reserva {
 
     private Integer codigo;
-    private String numeroDaReserva;
+    private Long numeroDaReserva;
     private int quantidadeDeDiarias;
     private Date dataDaLocacao;
     private Date dataRetorno;
@@ -17,19 +17,25 @@ public class Reserva {
     private String situacao;
     private float valorTotal;
     private Carro carro;
-    private Sede sede;
+    private Sede sedeOrigem;
+    private Sede sedeDevolução;
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column (name = "cod_reserva")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_reserva")
     public Integer getCodigo() {
         return codigo;
     }
-    public String getNumeroDaReserva() {
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public Long getNumeroDaReserva() {
         return numeroDaReserva;
     }
 
-    public void setNumeroDaReserva(String numeroDaReserva) {
+    public void setNumeroDaReserva(Long numeroDaReserva) {
         this.numeroDaReserva = numeroDaReserva;
     }
 
@@ -89,24 +95,43 @@ public class Reserva {
         this.valorTotal = valorTotal;
     }
 
+    public Carro getCarro() {
+        return carro;
+    }
+
+    public void setCarro(Carro carro) {
+        this.carro = carro;
+    }
+
+    public Sede getSedeOrigem() {
+        return sedeOrigem;
+    }
+
+    public void setSedeOrigem(Sede sedeOrigem) {
+        this.sedeOrigem = sedeOrigem;
+    }
+
+    public Sede getSedeDevolução() {
+        return sedeDevolução;
+    }
+
+    public void setSedeDevolução(Sede sedeDevolução) {
+        this.sedeDevolução = sedeDevolução;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Reserva reservas = (Reserva) o;
-        return quantidadeDeDiarias == reservas.quantidadeDeDiarias &&
-                Float.compare(reservas.kmRodados, kmRodados) == 0 &&
-                Float.compare(reservas.multa, multa) == 0 &&
-                Float.compare(reservas.valorTotal, valorTotal) == 0 &&
-                Objects.equals(numeroDaReserva, reservas.numeroDaReserva) &&
-                Objects.equals(dataDaLocacao, reservas.dataDaLocacao) &&
-                Objects.equals(dataRetorno, reservas.dataRetorno) &&
-                Objects.equals(situacao, reservas.situacao);
+        Reserva reserva = (Reserva) o;
+        return codigo.equals(reserva.codigo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numeroDaReserva, quantidadeDeDiarias, dataDaLocacao, dataRetorno, kmRodados, multa, situacao, valorTotal);
+        return Objects.hash(codigo);
     }
 }
+
+
 

@@ -13,7 +13,7 @@ public class Cliente {
     private String numeroDaCNH;
     private Date validadeDaCNH;
     private String categoria;
-    private List<Reservas>;
+    private List<Reserva> reservas;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

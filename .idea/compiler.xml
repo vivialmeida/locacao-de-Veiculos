@@ -9,5 +9,8 @@
         <module name="locacaoDeVeiculos" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="labbd_jpa_vendas" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

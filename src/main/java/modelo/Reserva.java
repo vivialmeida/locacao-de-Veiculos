@@ -1,13 +1,11 @@
 package modelo;
 
-import sun.util.calendar.LocalGregorianCalendar;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Reservas {
+public class Reserva {
 
     private Integer codigo;
     private String numeroDaReserva;
@@ -18,8 +16,8 @@ public class Reservas {
     private float multa;
     private String situacao;
     private float valorTotal;
-    private Carros carro;
-    private Sedes sede;
+    private Carro carro;
+    private Sede sede;
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -95,7 +93,7 @@ public class Reservas {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Reservas reservas = (Reservas) o;
+        Reserva reservas = (Reserva) o;
         return quantidadeDeDiarias == reservas.quantidadeDeDiarias &&
                 Float.compare(reservas.kmRodados, kmRodados) == 0 &&
                 Float.compare(reservas.multa, multa) == 0 &&

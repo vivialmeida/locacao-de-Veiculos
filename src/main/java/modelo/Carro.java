@@ -4,11 +4,10 @@ package modelo;
 import com.sun.istack.NotNull;
 
 import javax.persistence.Entity;
-import javax.persistence.UniqueConstraint;
 import java.util.Objects;
 
 @Entity
-public class Carros {
+public class Carro {
 
     private String placa;
     private String modelo;
@@ -70,7 +69,7 @@ public class Carros {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Carros carros = (Carros) o;
+        Carro carros = (Carro) o;
         return Objects.equals(placa, carros.placa) &&
                 Objects.equals(modelo, carros.modelo) &&
                 Objects.equals(ano, carros.ano) &&

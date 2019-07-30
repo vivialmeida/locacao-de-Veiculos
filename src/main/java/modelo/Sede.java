@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Sedes {
+public class Sede {
     private int codigoSede;
     private String nome;
     private Endereco endereco;
     private String telefone;
     private String nomeDoGerente;
     private float multaPorAtraso;
-    private List<Carros> carrosDaSede;
-    private List<Reservas> reservasDaSede;
+    private List<Carro> carrosDaSede;
+    private List<Reserva> reservasDaSede;
 
 
     @Id
@@ -71,7 +71,7 @@ public class Sedes {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Sedes sedes = (Sedes) o;
+        Sede sedes = (Sede) o;
         return Float.compare(sedes.multaPorAtraso, multaPorAtraso) == 0 &&
                 Objects.equals(nome, sedes.nome) &&
                 Objects.equals(endereco, sedes.endereco) &&

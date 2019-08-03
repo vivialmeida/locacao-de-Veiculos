@@ -17,8 +17,10 @@ public class Reserva {
     private String situacao;
     private float valorTotal;
     private Carro carro;
+    private Cliente cliente;
     private Sede sedeOrigem;
-    private Sede sedeDevolução;
+    private Sede sedeDevolucao;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -95,6 +97,7 @@ public class Reserva {
         this.valorTotal = valorTotal;
     }
 
+    @OneToOne
     public Carro getCarro() {
         return carro;
     }
@@ -103,20 +106,31 @@ public class Reserva {
         this.carro = carro;
     }
 
+    @OneToOne
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public Sede getSedeOrigem() {
         return sedeOrigem;
     }
 
+    @OneToOne
     public void setSedeOrigem(Sede sedeOrigem) {
         this.sedeOrigem = sedeOrigem;
     }
 
-    public Sede getSedeDevolução() {
-        return sedeDevolução;
+    @OneToOne
+    public Sede getSedeDevolucao() {
+        return sedeDevolucao;
     }
 
-    public void setSedeDevolução(Sede sedeDevolução) {
-        this.sedeDevolução = sedeDevolução;
+    public void setSedeDevolucao(Sede sedeDevolucao) {
+        this.sedeDevolucao = sedeDevolucao;
     }
 
     @Override

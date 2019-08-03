@@ -3,9 +3,8 @@ package modelo;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +16,9 @@ public class Carro {
     private float Km;
     private String descricao;
     private ClasseDeCarro classeDeCarro;
+    private Sede locacaoDeOrigem;
+    private Sede localizacaoAtual;
+    private List<Reserva> historicoDeReservas;
 
     @Id @NotNull
     public String getPlaca() {
@@ -59,13 +61,30 @@ public class Carro {
         this.descricao = descricao;
     }
 
-    @OneToOne
+    @Enumerated @Column(name = "classe_combustível")
     public ClasseDeCarro getClasseDeCarro() {
         return classeDeCarro;
     }
 
     public void setClasseDeCarro(ClasseDeCarro classeDeCarro) {
         this.classeDeCarro = classeDeCarro;
+    }
+
+    @OneToOne
+    public Sede getLocacaoDeOrigem() {
+        return locacaoDeOrigem;
+    }
+
+    public void setLocacaoDeOrigem(Sede locacaoDeOrigem) {
+        this.locacaoDeOrigem = locacaoDeOrigem;
+    }
+    @OneToOne
+    public Sede getLocalizacaoAtual() {
+        return localizacaoAtual;
+    }
+
+    public void setLocalizacaoAtual(Sede localizacaoAtual) {
+        this.localizacaoAtual = localizacaoAtual;
     }
 
     @Override

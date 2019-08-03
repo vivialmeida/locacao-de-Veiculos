@@ -67,6 +67,15 @@ public class Cliente {
         this.categoria = categoria;
     }
 
+    @OneToMany
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

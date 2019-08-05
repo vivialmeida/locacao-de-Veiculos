@@ -1,5 +1,8 @@
 package modelo;
 
+import com.sun.istack.NotNull;
+
+import javax.crypto.Mac;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -7,38 +10,45 @@ import java.util.Objects;
 @Entity
 public class Reserva {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
-    private Long numeroDaReserva;
+
+    @Column(nullable = false)
     private int quantidadeDeDiarias;
+
+    @Column(nullable = false)
     private Date dataDaLocacao;
+
+    @Column(nullable = false)
     private Date dataRetorno;
+
     private float kmRodados;
     private float multa;
-    private String situacao;
     private float valorTotal;
+
+    @Enumerated @NotNull
+    private Situacao situacao;
+
+    @ManyToOne (cascade = CascadeType.ALL)
     private Carro carro;
+
+    @ManyToOne (optional = false, cascade = CascadeType.ALL)
     private Cliente cliente;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Sede sedeOrigem;
+
+    @ManyToOne (optional = false, cascade = CascadeType.ALL)
     private Sede sedeDevolucao;
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_reserva")
     public Integer getCodigo() {
         return codigo;
     }
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
-    }
-
-    public Long getNumeroDaReserva() {
-        return numeroDaReserva;
-    }
-
-    public void setNumeroDaReserva(Long numeroDaReserva) {
-        this.numeroDaReserva = numeroDaReserva;
     }
 
     public int getQuantidadeDeDiarias() {
@@ -81,13 +91,6 @@ public class Reserva {
         this.multa = multa;
     }
 
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
 
     public float getValorTotal() {
         return valorTotal;
@@ -97,7 +100,7 @@ public class Reserva {
         this.valorTotal = valorTotal;
     }
 
-    @OneToOne
+
     public Carro getCarro() {
         return carro;
     }
@@ -106,7 +109,7 @@ public class Reserva {
         this.carro = carro;
     }
 
-    @OneToOne
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -115,16 +118,16 @@ public class Reserva {
         this.cliente = cliente;
     }
 
+
     public Sede getSedeOrigem() {
         return sedeOrigem;
     }
 
-    @OneToOne
     public void setSedeOrigem(Sede sedeOrigem) {
         this.sedeOrigem = sedeOrigem;
     }
 
-    @OneToOne
+
     public Sede getSedeDevolucao() {
         return sedeDevolucao;
     }

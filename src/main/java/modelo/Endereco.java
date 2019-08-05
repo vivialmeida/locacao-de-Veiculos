@@ -1,16 +1,30 @@
 package modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
 public class Endereco {
+    private Integer id;
     private String rua;
     private String bairro;
     private String cep;
     private String numero;
     private String cidade;
     private String estado;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getRua() {
         return rua;
@@ -65,17 +79,12 @@ public class Endereco {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Endereco endereco = (Endereco) o;
-        return Objects.equals(rua, endereco.rua) &&
-                Objects.equals(bairro, endereco.bairro) &&
-                Objects.equals(cep, endereco.cep) &&
-                Objects.equals(numero, endereco.numero) &&
-                Objects.equals(cidade, endereco.cidade) &&
-                Objects.equals(estado, endereco.estado);
+        return Objects.equals(id, endereco.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rua, bairro, cep, numero, cidade, estado);
+        return Objects.hash(id);
     }
 }
 

@@ -2,6 +2,7 @@ package modelo;
 
 
 import com.sun.istack.NotNull;
+import org.hibernate.dialect.Cache71Dialect;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,17 +11,32 @@ import java.util.Objects;
 @Entity
 public class Carro {
 
+    @Id @NotNull @Column(length = 45)
     private String placa;
+
+     @Column(length = 45, nullable = false)
     private String modelo;
+
+    @Column(length = 15)
     private String ano;
+
     private float Km;
+
     private String descricao;
+
+    @Enumerated @NotNull
     private ClasseDeCarro classeDeCarro;
-    private Sede locacaoDeOrigem;
-    private Sede localizacaoAtual;
+
+    @ManyToOne (optional = false, cascade = CascadeType.ALL)
+    private Sede sedeOrigem;
+
+    @ManyToOne (optional = false, cascade = CascadeType.ALL)
+    private Sede sedeAtual;
+
+    @OneToMany (mappedBy = "carro", cascade = CascadeType.ALL)
     private List<Reserva> historicoDeReservas;
 
-    @Id @NotNull
+
     public String getPlaca() {
         return placa;
     }
@@ -61,7 +77,6 @@ public class Carro {
         this.descricao = descricao;
     }
 
-    @Enumerated @Column(name = "classe_combustível")
     public ClasseDeCarro getClasseDeCarro() {
         return classeDeCarro;
     }
@@ -70,21 +85,20 @@ public class Carro {
         this.classeDeCarro = classeDeCarro;
     }
 
-    @OneToOne
     public Sede getLocacaoDeOrigem() {
-        return locacaoDeOrigem;
+        return sedeOrigem;
     }
 
     public void setLocacaoDeOrigem(Sede locacaoDeOrigem) {
-        this.locacaoDeOrigem = locacaoDeOrigem;
+        this.sedeOrigem = locacaoDeOrigem;
     }
-    @OneToOne
+
     public Sede getLocalizacaoAtual() {
-        return localizacaoAtual;
+        return sedeAtual;
     }
 
     public void setLocalizacaoAtual(Sede localizacaoAtual) {
-        this.localizacaoAtual = localizacaoAtual;
+        this.sedeAtual = localizacaoAtual;
     }
 
     @Override
@@ -99,4 +113,23 @@ public class Carro {
     public int hashCode() {
         return Objects.hash(placa);
     }
+
+    @Override
+    public String toString() {
+        return  '\n' +"----------- Carro ------------------     "  + "\n "+
+                "placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", ano='" + ano + '\'' +
+                ", Km=" + Km +
+                ", descricao='" + descricao + '\'' +
+                ", classeDeCarro=" + classeDeCarro +
+                ", sedeOrigem=" + sedeOrigem.getNome() + " Código: " + sedeOrigem.getCodigo() +
+                ", sedeAtual=" + sedeAtual.getNome() + " Código: "  + sedeAtual.getCodigo() +
+                ", historicoDeReservas=" + historicoDeReservas +
+                 + '\n' ;
+    }
 }
+
+
+
+

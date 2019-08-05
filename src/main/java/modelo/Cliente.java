@@ -1,22 +1,31 @@
 package modelo;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class Cliente {
-    private  Integer id;
-    private String nome;
-    private String CPF;
-    private String numeroDaCNH;
-    private Date validadeDaCNH;
-    private String categoria;
-    private List<Reserva> reservas;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(length = 60, nullable = false)
+    private String nome;
+
+    @OneToOne(optional =  false, cascade = CascadeType.ALL)
+    private CNH cnh;
+
+    @OneToOne (optional = false, cascade = CascadeType.ALL)
+    private Endereco endereco;
+
+    @OneToMany (mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<>();
+
     public Integer getId() {
         return id;
     }
@@ -33,41 +42,14 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCPF() {
-        return CPF;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
-    @Column (name = "numero_CNH")
-    public String getNumeroDaCNH() {
-        return numeroDaCNH;
-    }
-
-    public void setNumeroDaCNH(String numeroDaCNH) {
-        this.numeroDaCNH = numeroDaCNH;
-    }
-
-    @Column (name = "validade_CNH")
-    public Date getValidadeDaCNH() {
-        return validadeDaCNH;
-    }
-
-    public void setValidadeDaCNH(Date validadeDaCNH) {
-        this.validadeDaCNH = validadeDaCNH;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    @OneToMany
     public List<Reserva> getReservas() {
         return reservas;
     }
@@ -76,20 +58,14 @@ public class Cliente {
         this.reservas = reservas;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return Objects.equals(nome, cliente.nome) &&
-                Objects.equals(CPF, cliente.CPF) &&
-                Objects.equals(numeroDaCNH, cliente.numeroDaCNH) &&
-                Objects.equals(validadeDaCNH, cliente.validadeDaCNH) &&
-                Objects.equals(categoria, cliente.categoria);
+    public CNH getCnh() {
+        return cnh;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome, CPF, numeroDaCNH, validadeDaCNH, categoria);
+    public void setCnh(CNH cnh) {
+        this.cnh = cnh;
     }
 }
+
+
+

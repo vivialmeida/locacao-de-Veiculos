@@ -65,7 +65,19 @@ public class Cliente {
     public void setCnh(CNH cnh) {
         this.cnh = cnh;
     }
+
+    @Override
+    public String toString() {
+        return "\n " +
+                "Id = " + id + "\n " +
+                "Nome = '" + nome + '\'' + "\n " +
+                "CNH = " + cnh.getNumeroDaCNH() +" / Categoria: " + cnh.getCategoria() + "\n " +
+                "Endereco =  Bairro: " + endereco.getBairro() + "Logadouro:  " + endereco.getRua() +"Numero:" + endereco.getNumero() +
+                "Reservas =  " + reservas +
+                '\n';
+    }
 }
+
 
 
 

@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d496c7e3-02ea-4d51-aa75-aea2146aef8c" name="Default Changelist" comment="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/locacaoDeVeiculos.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/CNH.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Carro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Carro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Endereco.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Reserva.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Sede.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Sede.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/EMFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/EMFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/teste/TesteCliente.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -336,7 +326,7 @@
       <workItem from="1564965945843" duration="393000" />
       <workItem from="1565001018367" duration="2043000" />
       <workItem from="1565003540159" duration="168000" />
-      <workItem from="1565037255879" duration="9700000" />
+      <workItem from="1565037255879" duration="12095000" />
     </task>
     <task id="LOCAL-00001" summary="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas">
       <created>1564875469319</created>

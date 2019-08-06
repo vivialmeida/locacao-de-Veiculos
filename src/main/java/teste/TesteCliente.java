@@ -25,7 +25,7 @@ public class TesteCliente {
         transacao.begin();
 
 
-        CNH cnh = new CNH();
+        /*CNH cnh = new CNH();
         cnh.setCPF("1815");
         cnh.setNumeroDaCNH("12654");
         cnh.setValidadeDaCNH(new SimpleDateFormat("dd/mm/yyyy").parse("30/11/2022"));
@@ -52,13 +52,16 @@ public class TesteCliente {
         cliente.setNome("Paula Tarsis");
         cnh.setCliente(cliente);
 
-        //manager.merge(cnh);
+        manager.merge(cnh);
 
         manager.persist(cliente);
 
 
-        clienteRepository.remove(cliente);
+        clienteRepository.remove(cliente); */
 
+       System.out.println(clienteRepository.buscaPor("Paula").toString());
+
+        System.out.println(clienteRepository.buscaPor(1));
         transacao.commit();
 
         manager.close();

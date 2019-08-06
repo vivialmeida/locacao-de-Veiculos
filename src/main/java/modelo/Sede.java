@@ -34,9 +34,6 @@ public class Sede {
         return codigo;
     }
 
-    public void setCodigo(int codigoSede) {
-        this.codigo = codigo;
-    }
 
     public String getNome() {
         return nome;
@@ -105,6 +102,20 @@ public class Sede {
     @Override
     public int hashCode() {
         return Objects.hash(codigo);
+    }
+
+    @Override
+    public String toString() {
+        return "\n"+ " ------------- Sede ------------------" +
+                "Codigo = " + codigo  +
+                "Nome = " + nome + '\n' +
+                "Endereco = " + endereco +  '\n' +
+                "Telefone = " + telefone + '\n' +
+                "Nome Do Gerente = " + nomeDoGerente + '\n' +
+                "Multa Por Atraso = " + multaPorAtraso + '\n' +
+                "Carros=" + carros.listIterator() + '\n' +
+                "Reservas=" + reservas.listIterator() +
+                "\n";
     }
 }
 

@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 
 import javax.crypto.Mac;
 import javax.persistence.*;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Objects;
 
@@ -47,9 +48,6 @@ public class Reserva {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
 
     public int getQuantidadeDeDiarias() {
         return quantidadeDeDiarias;
@@ -75,7 +73,7 @@ public class Reserva {
         this.dataRetorno = dataRetorno;
     }
 
-    public float getKmRodados() {
+    public float getKmRodados(int i) {
         return kmRodados;
     }
 
@@ -134,6 +132,13 @@ public class Reserva {
 
     public void setSedeDevolucao(Sede sedeDevolucao) {
         this.sedeDevolucao = sedeDevolucao;
+    }
+
+    public  int diferencaDeDataEmDias () throws ParseException {
+        Date dtInicial = this.getDataDaLocacao();
+        Date dtFinal = this.dataRetorno;
+        return
+                (int) ((dtFinal.getTime() - dtInicial.getTime() + 3600000L) / 86400000L);
     }
 
     @Override

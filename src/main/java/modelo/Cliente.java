@@ -20,7 +20,7 @@ public class Cliente {
     @OneToOne(optional =  false, cascade = CascadeType.ALL)
     private CNH cnh;
 
-    @OneToOne (optional = false, cascade = CascadeType.ALL)
+    @ManyToOne  (optional = false, cascade = CascadeType.ALL)
     private Endereco endereco;
 
     @OneToMany (mappedBy = "cliente", cascade = CascadeType.ALL)

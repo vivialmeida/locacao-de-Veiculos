@@ -1,6 +1,9 @@
 package Repository;
 
 import javax.persistence.EntityManager;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 class DAOGenerico<T> {
@@ -26,5 +29,10 @@ class DAOGenerico<T> {
     void remove(T t) {
         manager.remove(t);
         manager.flush();
+    }
+
+    Date formataData(String data) throws ParseException {
+        Date sdf = new SimpleDateFormat ("dd/mm/yyyy").parse(data);
+        return  sdf;
     }
 }

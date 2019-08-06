@@ -106,16 +106,17 @@ public class Sede {
 
     @Override
     public String toString() {
-        return "\n"+ " ------------- Sede ------------------" +
+        return "\n"+ " ------------- Sede - -----------------" +
                 "Codigo = " + codigo  +
                 "Nome = " + nome + '\n' +
                 "Endereco = " + endereco +  '\n' +
                 "Telefone = " + telefone + '\n' +
                 "Nome Do Gerente = " + nomeDoGerente + '\n' +
                 "Multa Por Atraso = " + multaPorAtraso + '\n' +
-                "Carros=" + carros.listIterator() + '\n' +
-                "Reservas=" + reservas.listIterator() +
+                "Carros =" + carros.listIterator() + '\n' +
+                "Reservas =" + reservas.listIterator() +
                 "\n";
+
     }
 }
 

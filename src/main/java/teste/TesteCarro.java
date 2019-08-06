@@ -8,16 +8,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class TesteCarro {
+public class
+
+TesteCarro {
 
     public static void main(String[] args) {
         EntityManagerFactory factory =
                 Persistence.createEntityManagerFactory("locacaoDeVeiculos");
         EntityManager manager = factory.createEntityManager();
+        EntityTransaction transacao = manager.getTransaction();
 
         CarroRepository  carroRepository = new CarroRepository(manager);
 
-        EntityTransaction transacao = manager.getTransaction();
 
         transacao.begin();
 

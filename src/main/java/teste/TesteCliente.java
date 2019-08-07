@@ -1,16 +1,12 @@
 package teste;
 
-import Repository.ClienteRepository;
-import modelo.CNH;
-import modelo.Cliente;
-import modelo.Endereco;
+import repository.ClienteRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class TesteCliente {
 

@@ -1,12 +1,8 @@
 package modelo;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Cliente {
@@ -17,13 +13,13 @@ public class Cliente {
     @Column(length = 60, nullable = false)
     private String nome;
 
-    @OneToOne(optional =  false, cascade = CascadeType.ALL)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     private CNH cnh;
 
-    @ManyToOne  (optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Endereco endereco;
 
-    @OneToMany (mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Reserva> reservas = new ArrayList<>();
 
     public Integer getId() {
@@ -66,13 +62,23 @@ public class Cliente {
         this.cnh = cnh;
     }
 
+    public boolean reservaEmAberto() {
+        for (Reserva r : this.reservas) {
+            if (r.getStatusReserva().equals(StatusReserva.ABERTA)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     @Override
     public String toString() {
         return "\n " +
                 "Id = " + id + "\n " +
                 "Nome = '" + nome + '\'' + "\n " +
-                "CNH = " + cnh.getNumeroDaCNH() +" / Categoria: " + cnh.getCategoria() + "\n " +
-                "Endereco =  Bairro: " + endereco.getBairro() + "Logadouro:  " + endereco.getRua() +"Numero:" + endereco.getNumero() +
+                "CNH = " + cnh.getNumeroDaCNH() + " / Categoria: " + cnh.getCategoria() + "\n " +
+                "Endereco =  Bairro: " + endereco.getBairro() + "Logadouro:  " + endereco.getRua() + "Numero:" + endereco.getNumero() +
                 "Reservas =  " + reservas +
                 '\n';
     }

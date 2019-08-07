@@ -1,17 +1,16 @@
-package Repository;
+package repository;
 
 import modelo.Reserva;
 import modelo.Sede;
 
 import javax.persistence.EntityManager;
-import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 public class ReservaRepository {
 
     private final EntityManager maneger;
     private final DAOGenerico<Reserva> daoGenerico;
+
 
     public ReservaRepository(EntityManager maneger){
         this.maneger = maneger;
@@ -23,13 +22,15 @@ public class ReservaRepository {
     }
 
     public List<Reserva> reservasPorSede(Sede sede){
-       return  maneger.createQuery(" from  Sede s join Reserva r on s.codigo = r.sedeOrigem.codigo where s.codigo = :codigo ", Reserva.class)
-                .setParameter(sede.getCodigo(), sede).getResultList();
+       return  maneger.createQuery("select r from Reserva r where r.sedeOrigem = :codigo", Reserva.class)
+               .setParameter("codigo", sede)
+               .getResultList();
 
     }
 
-    public Date formataData(String data) throws ParseException {
-       return daoGenerico.formataData(data);
+
+    public void remove(Reserva reserva){
+        daoGenerico.remove(reserva);
     }
 
 }

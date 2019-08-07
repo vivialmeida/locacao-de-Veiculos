@@ -1,6 +1,6 @@
 package teste;
 
-import Repository.CarroRepository;
+import repository.CarroRepository;
 import modelo.Sede;
 
 import javax.persistence.EntityManager;

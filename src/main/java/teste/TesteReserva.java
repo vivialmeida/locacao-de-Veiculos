@@ -1,8 +1,6 @@
 package teste;
 
-import Repository.ReservaRepository;
-import modelo.Carro;
-import modelo.Cliente;
+import repository.ReservaRepository;
 import modelo.Reserva;
 import modelo.Sede;
 
@@ -21,16 +19,16 @@ public class TesteReserva {
     public static void main(String []args ) throws ParseException {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("locacaoDeVeiculos");
         EntityManager manager = factory.createEntityManager();
-        EntityTransaction transacao= manager.getTransaction() ;
+        EntityTransaction transacao =  manager.getTransaction() ;
 
         ReservaRepository reservaRepository = new ReservaRepository(manager);
 
          transacao.begin();
 
 
-    Cliente cliente = manager.find(Cliente.class, 1);
+    /* Cliente cliente = manager.find(Cliente.class, 1);
 
-    Sede sede = manager.find(Sede.class, 2);
+
 
 
     Carro carro = manager.find(Carro.class, "PTG-5165");
@@ -47,7 +45,17 @@ public class TesteReserva {
     reserva.setQuantidadeDeDiarias(reserva.diferencaDeDataEmDias());
 
 
-    manager.persist(reserva);
+    manager.persist(reserva); */
+
+    Sede sede = manager.find(Sede.class, 2);
+
+ for (Reserva r: reservaRepository.reservasPorSede(sede)){
+          System.out.println(r.toString());
+ }
+
+   // Reserva reserva = manager.find(Reserva.class, 2);
+
+   // reservaRepository.remove(reserva);
 
     transacao.commit();
 

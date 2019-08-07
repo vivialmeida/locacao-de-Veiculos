@@ -2,9 +2,9 @@ package modelo;
 
 import com.sun.istack.NotNull;
 
-import javax.crypto.Mac;
 import javax.persistence.*;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -28,19 +28,20 @@ public class Reserva {
     private float multa;
     private float valorTotal;
 
-    @Enumerated @NotNull
-    private Situacao situacao;
+    @Enumerated
+    @NotNull
+    private StatusReserva statusReserva;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Carro carro;
 
-    @ManyToOne (optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Cliente cliente;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Sede sedeOrigem;
 
-    @ManyToOne (optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Sede sedeDevolucao;
 
 
@@ -134,11 +135,29 @@ public class Reserva {
         this.sedeDevolucao = sedeDevolucao;
     }
 
-    public  int diferencaDeDataEmDias () throws ParseException {
+    public StatusReserva getStatusReserva() {
+        return statusReserva;
+    }
+
+    public void setStatusReserva(StatusReserva statusReserva) {
+        this.statusReserva = statusReserva;
+    }
+
+    public int diferencaDeDataEmDias() throws ParseException {
         Date dtInicial = this.getDataDaLocacao();
         Date dtFinal = this.dataRetorno;
         return
                 (int) ((dtFinal.getTime() - dtInicial.getTime() + 3600000L) / 86400000L);
+    }
+
+    Date formataData(String data) throws ParseException {
+        Date sdf = new SimpleDateFormat("dd/mm/yyyy").parse(data);
+        return sdf;
+    }
+
+
+    public void calculaValorComMulta() {
+        this.setValorTotal(getValorTotal() + getMulta());
     }
 
     @Override
@@ -152,6 +171,24 @@ public class Reserva {
     @Override
     public int hashCode() {
         return Objects.hash(codigo);
+    }
+
+    @Override
+    public String toString() {
+        return "------ Reserva --------" + "\n" +
+
+                "Quantidade De Diarias= " + quantidadeDeDiarias +
+                " \n Data da Locacao= " + dataDaLocacao +
+                "\n Data Retorno= " + dataRetorno +
+                "\n km Rodados = " + kmRodados +
+                "\n Multa= " + multa +
+                "\n Valor Total= " + valorTotal +
+                "\n Situacao= " + statusReserva +
+                "\n Carro= " + "Modelo: " + carro.getModelo() + "  Placa: " + carro.getPlaca() +
+                "\n Cliente= " + "Nome: " + cliente.getNome() + "  CPF: " + cliente.getCnh().getCPF() +
+                "\n Sede Origem= " + "Nome: " + sedeOrigem.getNome() + "  Gerente: " + sedeOrigem.getNomeDoGerente() +
+                "\n Sede Devolucao= " + "Nome: " + sedeDevolucao.getNome() + "  Gerente: " + sedeDevolucao.getNomeDoGerente() +
+                '\n';
     }
 }
 

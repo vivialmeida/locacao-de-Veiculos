@@ -86,5 +86,17 @@ public class Endereco {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public String toString() {
+        return "Endereco" +
+                "Rua= " + rua + '\'' +
+                "Bairro= " + bairro + '\'' +
+                "CEP= " + cep + '\'' +
+                "Numero= " + numero + '\'' +
+                "Cidade= " + cidade + '\'' +
+                "Estado= " + estado + '\'' +
+                "\n\n";
+    }
 }
 

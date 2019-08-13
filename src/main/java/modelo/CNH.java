@@ -1,18 +1,21 @@
 package modelo;
 
-
-
 import com.sun.istack.NotNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class CNH {
-    @Id @NotNull
+    @Id
+    @NotNull
     private String CPF;
 
     @Column(length = 45)
@@ -65,5 +68,41 @@ public class CNH {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+
+    public boolean cnhDentroDaValidade() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        if (this.getValidadeDaCNH().after(date)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CNH cnh = (CNH) o;
+        return Objects.equals(CPF, cnh.CPF);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(CPF);
+    }
+
+    @Override
+    public String toString() {
+        return "CNH{" +
+                "CPF='" + CPF + '\'' +
+                ", numeroDaCNH='" + numeroDaCNH + '\'' +
+                ", validadeDaCNH=" + validadeDaCNH +
+                ", categoria='" + categoria + '\'' +
+                ", cliente=" + cliente +
+                '}';
     }
 }

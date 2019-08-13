@@ -1,7 +1,10 @@
 package modelo;
 
+import repository.ClienteRepository;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -71,6 +74,13 @@ public class Cliente {
         return false;
     }
 
+  public boolean checaValidadeDaCNH(){
+        if(cnh.cnhDentroDaValidade()){
+            return true;
+        } else {
+            return false;
+        }
+  }
 
     @Override
     public String toString() {

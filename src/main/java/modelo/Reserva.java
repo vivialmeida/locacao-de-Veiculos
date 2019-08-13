@@ -156,8 +156,9 @@ public class Reserva {
     }
 
 
-    public void calculaValorComMulta() {
+    public float calculaValorComMulta() {
         this.setValorTotal(getValorTotal() + getMulta());
+        return getValorTotal();
     }
 
     @Override

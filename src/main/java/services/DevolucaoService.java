@@ -16,18 +16,23 @@ public class DevolucaoService {
         this.repositorio = new ReservaRepository(manager);
     }
 
-    public void devolucao(Reserva reserva) {
+    public boolean devolucao(Reserva reserva) {
+
         try {
-            manager.find(Reserva.class, reserva);
-            if (reserva.getSedeDevolucao().equals(reserva.getSedeOrigem())) {
-                return;
+
+            manager.getTransaction().begin();
+           if (manager.find(Reserva.class, reserva) == null){
+               return  false;
+           } else if (reserva.getSedeDevolucao().equals(reserva.getSedeOrigem())) {
+                return true;
             } else {
                 reserva.calculaValorComMulta();
+                manager.getTransaction().commit();
+                return  true;
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException();
         }
-
 
     }
 

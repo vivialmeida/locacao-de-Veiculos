@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d496c7e3-02ea-4d51-aa75-aea2146aef8c" name="Default Changelist" comment="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/SituacaoCarro.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/CadastraOuAtualizaCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/TransferenciaDeVeiculoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/CarroRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/CarroRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ClienteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/DAOGenerico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/DAOGenerico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/ReservaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ReservaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/SedeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/SedeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Carro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Carro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/CNH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/CNH.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Endereco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Reserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Situacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/StatusReserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteCarro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/teste/TesteCarro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/teste/TesteCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/teste/TesteReserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/DevolucaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/DevolucaoService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +100,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TesteReserva">
+  <component name="RunManager" selected="Application.TesteCarro">
     <configuration name="JPATeste" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="teste.JPATeste" />
       <module name="locacaoDeVeiculos" />
@@ -322,9 +315,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TesteCarro" />
         <item itemvalue="Application.TesteReserva" />
         <item itemvalue="Application.TesteCliente" />
-        <item itemvalue="Application.TesteCarro" />
         <item itemvalue="Application.JPATeste" />
         <item itemvalue="Application.JPAteste" />
       </list>
@@ -353,6 +346,9 @@
       <workItem from="1565003540159" duration="168000" />
       <workItem from="1565037255879" duration="22103000" />
       <workItem from="1565133099904" duration="8734000" />
+      <workItem from="1565204041388" duration="7335000" />
+      <workItem from="1565299142947" duration="672000" />
+      <workItem from="1565307204589" duration="564000" />
     </task>
     <task id="LOCAL-00001" summary="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas">
       <created>1564875469319</created>
@@ -397,5 +393,19 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas" />
     <option name="LAST_COMMIT_MESSAGE" value="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/repository/CarroRepository.java</url>
+          <line>36</line>
+          <properties class="repository.CarroRepository" method="salvaOuAtualiza">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

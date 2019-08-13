@@ -14,7 +14,7 @@ public class ClienteRepository {
         this.manager = manager;
         daoGenerico = new DAOGenerico<Cliente>(manager);
     }
-
+''
     public Cliente buscaPor(Integer id) {
         return daoGenerico.buscaPorId(Cliente.class, id);
     }

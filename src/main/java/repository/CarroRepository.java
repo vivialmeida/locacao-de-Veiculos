@@ -1,14 +1,18 @@
 package repository;
 
+
 import modelo.Carro;
+import modelo.ClasseDeCarro;
+import util.EMFactory;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 public class CarroRepository  {
 
     private final DAOGenerico<Carro> daoGenerico;
-    private final EntityManager maneger;
+    EntityManager maneger = EMFactory.getEntityManager();
 
     public CarroRepository(EntityManager  maneger){
     this.maneger = maneger;
@@ -27,7 +31,11 @@ public class CarroRepository  {
 
     }
 
-    public List<Carro> listaPorClasse(){return maneger.createQuery("from Carro", Carro.class).getResultList();
+
+   public List<Carro>buscaPorClasse(ClasseDeCarro classe){
+       Query q = maneger.createQuery("from Carro where classeDeCarro = :classe");
+       q.setParameter("classe",classe);
+       return q.getResultList();
    }
 
     public void remover (Carro carro) {

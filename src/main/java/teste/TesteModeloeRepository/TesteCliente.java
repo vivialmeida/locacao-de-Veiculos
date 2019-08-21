@@ -1,4 +1,4 @@
-package teste;
+package teste.TesteModeloeRepository;
 
 import repository.ClienteRepository;
 

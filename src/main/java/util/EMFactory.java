@@ -5,15 +5,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
-
     public class EMFactory {
 
-        private final EntityManagerFactory factory =
-                Persistence.createEntityManagerFactory("pedidovendas");
+        private static EntityManagerFactory factory =
+                Persistence.createEntityManagerFactory("locacaoDeVeiculos");
 
 
-        public EntityManager getEntityManager() {
+        public static EntityManager getEntityManager() {
             return factory.createEntityManager();
 
         }

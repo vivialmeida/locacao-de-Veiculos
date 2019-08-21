@@ -1,6 +1,9 @@
 package modelo;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -21,7 +24,7 @@ public class Sede {
     @Column(length = 60)
     private String nomeDoGerente;
 
-    private float multaPorAtraso;
+    private BigDecimal multaPorAtraso;
 
     @OneToMany (mappedBy = "sedeOrigem" , cascade = CascadeType.ALL)
     private List<Carro> carros = new ArrayList<>();
@@ -67,11 +70,11 @@ public class Sede {
         this.nomeDoGerente = nomeDoGerente;
     }
 
-    public float getMultaPorAtraso() {
+    public BigDecimal    getMultaPorAtraso() {
         return multaPorAtraso;
     }
 
-    public void setMultaPorAtraso(float multaPorAtraso) {
+    public void setMultaPorAtraso(BigDecimal multaPorAtraso) {
         this.multaPorAtraso = multaPorAtraso;
     }
 
@@ -99,7 +102,68 @@ public class Sede {
         return codigo == sede.codigo;
     }
 
-    @Override
+    public Reserva realizarReserva(Cliente cliente, Carro carro, int qtdDiarias) throws Exception {
+        if (cliente.getCnh().cnhDentroDaValidade() && (carro.getSituacao().equals(SituacaoCarro.disponivel) || carro.getSituacao().equals(SituacaoCarro.foraDaOrigem)) && (!cliente.reservaEmAberto()))
+        {
+                Reserva reserva = new Reserva();
+                reserva.setDataDaLocacao(LocalDate.now());
+                reserva.setQuantidadeDeDiarias(qtdDiarias);
+                reserva.setSedeOrigem(this);
+                reserva.setCliente(cliente);
+                cliente.adicionarReserva(reserva);
+                carro.setSituacao(SituacaoCarro.alugado);
+                reserva.setStatusReserva(StatusReserva.aberta);
+                reserva.setCarro(carro);
+                carro.alugarCarro(reserva);
+
+              //  carro.setHistoricoDeReservas();
+                this.reservas.add(reserva);
+                return  reserva;
+        }
+
+        else {
+
+            throw new IllegalStateException("Não foi possivel realizar reserva");
+
+        }
+    }
+
+    public void encerrarReserva (Reserva reserva){
+
+        reserva.calculaValorDaLocação(this);
+        reserva.getCarro().setSituacao(SituacaoCarro.disponivel);
+        reserva.setDataRetorno(LocalDate.now());
+        reserva.getCarro().setSedeAtual(this);
+        reserva.setSedeDevolucao(this);
+        reserva.setStatusReserva(StatusReserva.fechada);
+        reserva.setValorTotal(reserva.calculaValorDaLocação(this).add(getMultaPorAtraso()));
+    }
+
+
+
+    public List<Reserva> recuperarReservasEmAberto(){
+        List <Reserva> reservas = new LinkedList<>();
+        for (Reserva r : this.getReservas()) {
+            if(!r.getStatusReserva().equals(StatusReserva.aberta)){
+                reservas.add(r);
+            }
+        }
+        return reservas;
+    }
+    
+    
+    public Carro carroComMenosQuantidadeDeReservas(){
+        int quantidade =2000;
+        Carro carro = null;
+        for (Carro c : this.carros){
+            if (c.getHistoricoDeReservas().size() < quantidade){
+                quantidade = c.getHistoricoDeReservas().size();
+                carro =c;
+            }
+        }
+        return carro;
+    }
+        @Override
     public int hashCode() {
         return Objects.hash(codigo);
     }
@@ -118,6 +182,8 @@ public class Sede {
                 "\n";
 
     }
+
+
 }
 
 

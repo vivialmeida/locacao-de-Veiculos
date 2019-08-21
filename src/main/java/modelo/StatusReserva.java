@@ -1,20 +1,10 @@
 package modelo;
 
 public enum StatusReserva {
-    ABERTA("aberta"),
-    FECHADA("fechada");
+    aberta,
+    fechada;
 
 
-    private String situacao;
 
-
-    private StatusReserva(String situacao) {
-        this.situacao = situacao;
-    }
-
-
-    public String getSituacao() {
-        return this.situacao;
-    }
 
 }

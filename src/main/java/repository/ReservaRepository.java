@@ -1,9 +1,11 @@
 package repository;
 
+import modelo.Endereco;
 import modelo.Reserva;
 import modelo.Sede;
 
 import javax.persistence.EntityManager;
+import java.util.Date;
 import java.util.List;
 
 public class ReservaRepository {
@@ -21,10 +23,19 @@ public class ReservaRepository {
         return daoGenerico.buscaPorId(Reserva.class, id);
     }
 
+    public Reserva salvaOuAtualiza(Reserva reserva){
+        return  daoGenerico.salvaOuAtualiza(reserva);
+    }
+
     public List<Reserva> reservasPorSede(Sede sede){
        return  maneger.createQuery("select r from Reserva r where r.sedeOrigem = :codigo", Reserva.class)
                .setParameter("codigo", sede)
                .getResultList();
+
+    }
+
+    public List<Reserva> reservasFinalizadasPorSedeEntre(Date dateInicio, Date dateFim, Sede sede){
+        return maneger.createQuery("select r from Reserva r where r.sedeDevolucao = :sede and r.dataRetorno = :dateFim between :dateInicio  ").getResultList();
 
     }
 

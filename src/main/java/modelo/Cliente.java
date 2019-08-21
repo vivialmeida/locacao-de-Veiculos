@@ -61,26 +61,40 @@ public class Cliente {
         return cnh;
     }
 
-    public void setCnh(CNH cnh) {
+    private void setCnh(CNH cnh) {
         this.cnh = cnh;
     }
 
     public boolean reservaEmAberto() {
         for (Reserva r : this.reservas) {
-            if (r.getStatusReserva().equals(StatusReserva.ABERTA)) {
+            if (r.getStatusReserva().equals(StatusReserva.aberta)) {
                 return true;
             }
         }
         return false;
     }
 
-  public boolean checaValidadeDaCNH(){
-        if(cnh.cnhDentroDaValidade()){
-            return true;
-        } else {
-            return false;
+    public void  adicionarReserva (Reserva reserva)  {
+        if((reserva != null)  && (!reservaEmAberto())){
+            this.reservas.add(reserva);
+            reserva.setCliente(this);
+            return;
         }
-  }
+        throw new IllegalStateException("Impossivel adicionar reserva ao cliente");
+
+
+    }
+
+    public boolean atualizaDados(CNH cnh) throws Exception {
+        if(!this.reservaEmAberto()){
+            this.setCnh(cnh);
+            return true;
+        }
+        throw new Exception( "Cliente possui reservas em aberto");
+
+
+    }
+
 
     @Override
     public String toString() {

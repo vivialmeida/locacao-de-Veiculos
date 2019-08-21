@@ -3,8 +3,8 @@ package modelo;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,16 +19,17 @@ public class Reserva {
     private int quantidadeDeDiarias;
 
     @Column(nullable = false)
-    private Date dataDaLocacao;
+    private LocalDate dataDaLocacao;
 
     @Column(nullable = false)
-    private Date dataRetorno;
+    private LocalDate dataRetorno;
 
-    private float kmRodados;
-    private float multa;
-    private float valorTotal;
+    private BigDecimal kmRodados;
+    private BigDecimal multa;
+    private BigDecimal valorTotal;
+    private BigDecimal valorDiarias;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @NotNull
     private StatusReserva statusReserva;
 
@@ -58,44 +59,44 @@ public class Reserva {
         this.quantidadeDeDiarias = quantidadeDeDiarias;
     }
 
-    public Date getDataDaLocacao() {
+    public LocalDate getDataDaLocacao() {
         return dataDaLocacao;
     }
 
-    public void setDataDaLocacao(Date dataDaLocacao) {
+    public void setDataDaLocacao(LocalDate dataDaLocacao) {
         this.dataDaLocacao = dataDaLocacao;
     }
 
-    public Date getDataRetorno() {
+    public LocalDate getDataRetorno() {
         return dataRetorno;
     }
 
-    public void setDataRetorno(Date dataRetorno) {
+    public void setDataRetorno(LocalDate dataRetorno) {
         this.dataRetorno = dataRetorno;
     }
 
-    public float getKmRodados(int i) {
+    public BigDecimal getKmRodados() {
         return kmRodados;
     }
 
-    public void setKmRodados(float kmRodados) {
+    public void setKmRodados(BigDecimal kmRodados) {
         this.kmRodados = kmRodados;
     }
 
-    public float getMulta() {
+    public BigDecimal getMulta() {
         return multa;
     }
 
-    public void setMulta(float multa) {
+    public void setMulta(BigDecimal multa) {
         this.multa = multa;
     }
 
 
-    public float getValorTotal() {
+    public BigDecimal getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(float valorTotal) {
+    public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
     }
 
@@ -143,23 +144,20 @@ public class Reserva {
         this.statusReserva = statusReserva;
     }
 
-    public int diferencaDeDataEmDias() throws ParseException {
-        Date dtInicial = this.getDataDaLocacao();
-        Date dtFinal = this.dataRetorno;
-        return
-                (int) ((dtFinal.getTime() - dtInicial.getTime() + 3600000L) / 86400000L);
-    }
-
-    Date formataData(String data) throws ParseException {
-        Date sdf = new SimpleDateFormat("dd/mm/yyyy").parse(data);
-        return sdf;
-    }
 
 
-    public float calculaValorComMulta() {
-        this.setValorTotal(getValorTotal() + getMulta());
-        return getValorTotal();
-    }
+
+   public BigDecimal calculaValorDaLocação(Sede sede){
+        this.valorTotal = carro.getValorDiaria().multiply((new BigDecimal(quantidadeDeDiarias)));
+            if(!getSedeOrigem().equals(sede)) {
+                this.getCarro().setSituacao(SituacaoCarro.foraDaOrigem);
+                this.setMulta(sede.getMultaPorAtraso());
+                return valorTotal;
+            }
+            return valorTotal ;
+       }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -168,6 +166,8 @@ public class Reserva {
         Reserva reserva = (Reserva) o;
         return codigo.equals(reserva.codigo);
     }
+
+
 
     @Override
     public int hashCode() {

@@ -4,6 +4,7 @@ package modelo;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,10 +26,10 @@ public class Carro {
 
     private String descricao;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private SituacaoCarro situacao;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @NotNull
     private ClasseDeCarro classeDeCarro;
 
@@ -41,6 +42,7 @@ public class Carro {
     @OneToMany(mappedBy = "carro", cascade = CascadeType.ALL)
     private List<Reserva> historicoDeReservas;
 
+    private BigDecimal valorDiaria;
 
     public String getPlaca() {
         return placa;
@@ -102,8 +104,62 @@ public class Carro {
         return sedeAtual;
     }
 
-    public void setLocalizacaoAtual(Sede localizacaoAtual) {
-        this.sedeAtual = localizacaoAtual;
+    public SituacaoCarro getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoCarro situacao) {
+        this.situacao = situacao;
+    }
+
+    public Sede getSedeOrigem() {
+        return sedeOrigem;
+    }
+
+    public void setSedeOrigem(Sede sedeOrigem) {
+        this.sedeOrigem = sedeOrigem;
+    }
+
+    public Sede getSedeAtual() {
+        return sedeAtual;
+    }
+
+    public void setSedeAtual(Sede sedeAtual) {
+        this.sedeAtual = sedeAtual;
+    }
+
+    public List<Reserva> getHistoricoDeReservas() {
+        return historicoDeReservas;
+    }
+
+    public void setHistoricoDeReservas(List<Reserva> historicoDeReservas) {
+        this.historicoDeReservas = historicoDeReservas;
+    }
+
+    public BigDecimal getValorDiaria() {
+        return valorDiaria;
+    }
+
+    public void setValorDiaria(BigDecimal valorDiaria) {
+        this.valorDiaria = valorDiaria;
+    }
+
+    public void alugarCarro(Reserva reserva) {
+        //this.historicoDeReservas.add(reserva);
+        this.setSituacao(SituacaoCarro.alugado);
+        this.setLocacaoDeOrigem(reserva.getSedeOrigem());
+    }
+
+    public void tranferenciaDeVeiculo(Carro carro, Sede sede) throws Exception {
+
+        if (this.getSituacao().equals(SituacaoCarro.disponivel)) {
+            this.setSedeAtual(sede);
+            return;
+        } else {
+            throw new Exception("Não foi possivel concluir a tranferencia do veiculo");
+
+        }
+
     }
 
     @Override

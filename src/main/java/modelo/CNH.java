@@ -6,10 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -21,7 +18,7 @@ public class CNH {
     @Column(length = 45)
     private String numeroDaCNH;
 
-    private Date validadeDaCNH;
+    private LocalDate validadeDaCNH;
 
     @Column(length = 15)
     private String categoria;
@@ -43,11 +40,11 @@ public class CNH {
         this.numeroDaCNH = numeroDaCNH;
     }
 
-    public Date getValidadeDaCNH() {
+    public LocalDate getValidadeDaCNH() {
         return validadeDaCNH;
     }
 
-    public void setValidadeDaCNH(Date validadeDaCNH) {
+    public void setValidadeDaCNH(LocalDate validadeDaCNH) {
         this.validadeDaCNH = validadeDaCNH;
     }
 
@@ -72,14 +69,14 @@ public class CNH {
 
 
     public boolean cnhDentroDaValidade() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
-        if (this.getValidadeDaCNH().after(date)) {
+        if (LocalDate.now().isBefore(this.getValidadeDaCNH())){
+
             return true;
-        } else {
-            return false;
         }
+            return false;
     }
+
+
 
 
     @Override

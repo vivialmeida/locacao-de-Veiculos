@@ -1,10 +1,7 @@
 package modelo;
 
-import repository.ClienteRepository;
-
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -65,9 +62,9 @@ public class Cliente {
         this.cnh = cnh;
     }
 
-    public boolean reservaEmAberto() {
+    public boolean temReservaEmAberto() {
         for (Reserva r : this.reservas) {
-            if (r.getStatusReserva().equals(StatusReserva.aberta)) {
+            if (r.getStatusReserva().equals(StatusReserva.ABERTA)) {
                 return true;
             }
         }
@@ -75,7 +72,7 @@ public class Cliente {
     }
 
     public void  adicionarReserva (Reserva reserva)  {
-        if((reserva != null)  && (!reservaEmAberto())){
+        if((reserva != null)  && (!temReservaEmAberto())){
             this.reservas.add(reserva);
             reserva.setCliente(this);
             return;
@@ -86,7 +83,7 @@ public class Cliente {
     }
 
     public boolean atualizaDados(CNH cnh) throws Exception {
-        if(!this.reservaEmAberto()){
+        if(!this.temReservaEmAberto()){
             this.setCnh(cnh);
             return true;
         }

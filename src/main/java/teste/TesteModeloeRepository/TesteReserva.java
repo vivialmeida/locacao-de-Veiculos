@@ -9,7 +9,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.math.BigDecimal;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -75,9 +74,9 @@ public class TesteReserva {
         carro1.setModelo("Celta");
         carro1.setKm(234000);
         carro1.setAno("2016");
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(100));
         manager.persist(carro1);
 
@@ -87,9 +86,9 @@ public class TesteReserva {
         carro2.setModelo("Renault");
         carro2.setKm(251000);
         carro2.setAno("2018");
-        carro2.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro2.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro2.setSedeAtual(sede);
-        carro2.setSituacao(SituacaoCarro.disponivel);
+        carro2.setSituacao(SituacaoCarro.DISPONIVEL);
         carro2.setValorDiaria(new BigDecimal(100));
         manager.persist(carro2);
 
@@ -99,9 +98,9 @@ public class TesteReserva {
         carro3.setModelo("Lamborgini");
         carro3.setKm(89000);
         carro3.setAno("2019");
-        carro3.setClasseDeCarro(ClasseDeCarro.luxo);
+        carro3.setClasseDeCarro(ClasseDeCarro.LUXO);
         carro3.setSedeAtual(sede);
-        carro3.setSituacao(SituacaoCarro.disponivel);
+        carro3.setSituacao(SituacaoCarro.DISPONIVEL);
         carro3.setValorDiaria(new BigDecimal(800));
         manager.persist(carro3);
 

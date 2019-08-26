@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d496c7e3-02ea-4d51-aa75-aea2146aef8c" name="Default Changelist" comment="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/teste/TesteJunit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/teste/TesteModeloeRepository/TesteCarro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/teste/TesteModeloeRepository/TesteReserva.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modelo/CNH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/CNH.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Carro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Carro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/ClasseDeCarro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/ClasseDeCarro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Cliente.java" afterDir="false" />
@@ -16,17 +11,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/Sede.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/Sede.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/SituacaoCarro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/SituacaoCarro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/modelo/StatusReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modelo/StatusReserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/CarroRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/CarroRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ClienteRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/ReservaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ReservaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/CadastraOuAtualizaCliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/DevolucaoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/TransferenciaDeVeiculoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteCarro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/teste/TesteModeloeRepository/TesteCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteReserva.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/EMFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/EMFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteJunit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/teste/TesteJunit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteModeloeRepository/TesteCarro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/teste/TesteModeloeRepository/TesteCarro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/teste/TesteModeloeRepository/TesteReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/teste/TesteModeloeRepository/TesteReserva.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,11 +67,6 @@
         </map>
       </branch-storage>
     </favorite-branches>
-  </component>
-  <component name="JavaAutoRunManager">
-    <enabled-run-configurations>
-      <run-configuration type="JUnit" name="TesteSede.reservaParaCarrosLocalizadosEmOutrasede" />
-    </enabled-run-configurations>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -404,7 +387,11 @@
       <workItem from="1566266290012" duration="16269000" />
       <workItem from="1566318178085" duration="4741000" />
       <workItem from="1566344091123" duration="2260000" />
-      <workItem from="1566346539543" duration="16001000" />
+      <workItem from="1566346539543" duration="17108000" />
+      <workItem from="1566394472745" duration="596000" />
+      <workItem from="1566520474960" duration="1514000" />
+      <workItem from="1566606654910" duration="5986000" />
+      <workItem from="1566825940276" duration="598000" />
     </task>
     <task id="LOCAL-00001" summary="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas">
       <created>1564875469319</created>
@@ -449,16 +436,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas" />
     <option name="LAST_COMMIT_MESSAGE" value="Criando classe situacao, adicionando atributos na classe Cliente, Carro e Reservas" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/modelo/Carro.java</url>
-          <line>155</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

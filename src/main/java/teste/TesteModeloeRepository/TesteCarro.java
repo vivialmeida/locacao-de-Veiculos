@@ -36,9 +36,9 @@ TesteCarro {
         carro1.setKm(234000);
         carro1.setAno("2016");
         carro1.setLocacaoDeOrigem(sede);
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.alugado);
+        carro1.setSituacao(SituacaoCarro.ALUGADO);
         carro1.setValorDiaria(new BigDecimal(100));
 
         Carro carro2 = new Carro();
@@ -47,9 +47,9 @@ TesteCarro {
         carro2.setKm(234000);
         carro2.setAno("2016");
         carro2.setLocacaoDeOrigem(sede);
-        carro2.setClasseDeCarro(ClasseDeCarro.medio);
+        carro2.setClasseDeCarro(ClasseDeCarro.MEDIO);
         carro2.setSedeAtual(sede);
-        carro2.setSituacao(SituacaoCarro.foraDaOrigem);
+        carro2.setSituacao(SituacaoCarro.FORA_DA_ORIGEM);
         carro2.setValorDiaria(new BigDecimal(150));
 
         Carro carro3 = new Carro();
@@ -58,9 +58,9 @@ TesteCarro {
         carro3.setKm(234000);
         carro3.setAno("2016");
         carro3.setLocacaoDeOrigem(sede);
-        carro3.setClasseDeCarro(ClasseDeCarro.luxo);
+        carro3.setClasseDeCarro(ClasseDeCarro.LUXO);
         carro3.setSedeAtual(sede);
-        carro3.setSituacao(SituacaoCarro.alugado);
+        carro3.setSituacao(SituacaoCarro.ALUGADO);
         carro3.setValorDiaria(new BigDecimal(300));
 
         Carro carro4 = new Carro();
@@ -69,9 +69,9 @@ TesteCarro {
         carro4.setKm(234000);
         carro4.setAno("2016");
         carro4.setLocacaoDeOrigem(sede);
-        carro4.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro4.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro4.setSedeAtual(sede);
-        carro4.setSituacao(SituacaoCarro.alugado);
+        carro4.setSituacao(SituacaoCarro.ALUGADO);
         carro4.setValorDiaria(new BigDecimal(100));
        // manager.persist(carro1);
 
@@ -81,7 +81,7 @@ TesteCarro {
         carroRepository.salvaOuAtualiza(carro4);
 
         //System.out.println( carroRepository.buscarId("DQE-8364").toString());
-      System.out.println( carroRepository.buscaPorClasse(ClasseDeCarro.compacto));
+      System.out.println( carroRepository.buscaPorClasse(ClasseDeCarro.COMPACTO));
 
 
 

@@ -5,7 +5,6 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -150,7 +149,7 @@ public class Reserva {
    public BigDecimal calculaValorDaLocação(Sede sede){
         this.valorTotal = carro.getValorDiaria().multiply((new BigDecimal(quantidadeDeDiarias)));
             if(!getSedeOrigem().equals(sede)) {
-                this.getCarro().setSituacao(SituacaoCarro.foraDaOrigem);
+                this.getCarro().setSituacao(SituacaoCarro.FORA_DA_ORIGEM);
                 this.setMulta(sede.getMultaPorAtraso());
                 return valorTotal;
             }

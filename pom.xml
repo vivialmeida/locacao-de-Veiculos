@@ -90,23 +90,12 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.testng</groupId>
+            <groupId>org.testng</groupId>8j
             <artifactId>testng</artifactId>
             <version>7.0.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.0.0</version>
-            <scope>compile</scope>
-        </dependency>
+
 
     </dependencies>
 

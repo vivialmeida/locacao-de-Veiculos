@@ -5,6 +5,7 @@ import modelo.Reserva;
 import modelo.Sede;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -34,10 +35,10 @@ public class ReservaRepository {
 
     }
 
-    public List<Reserva> reservasFinalizadasPorSedeEntre(Date dateInicio, Date dateFim, Sede sede){
+   /* public List<Reserva> reservasFinalizadasPorSedeEntre(LocalDate dateInicio, LocalDate dateFim, Sede sede){
         return maneger.createQuery("select r from Reserva r where r.sedeDevolucao = :sede and r.dataRetorno = :dateFim between :dateInicio  ").getResultList();
 
-    }
+    } */
 
 
     public void remove(Reserva reserva){

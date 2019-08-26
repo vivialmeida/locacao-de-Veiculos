@@ -2,8 +2,8 @@ package modelo;
 
 public enum SituacaoCarro {
 
-    disponivel,
-    alugado,
-    foraDaOrigem;
+    DISPONIVEL,
+    ALUGADO,
+    FORA_DA_ORIGEM;
 
 }

@@ -7,9 +7,7 @@ import repository.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -78,9 +76,9 @@ public class TesteJunit {
         carro1.setKm(234000);
         carro1.setAno("2016");
         carro1.setLocacaoDeOrigem(sede);
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.alugado);
+        carro1.setSituacao(SituacaoCarro.ALUGADO);
         carro1.setValorDiaria(new BigDecimal(100));
 
         Carro carro2 = new Carro();
@@ -89,9 +87,9 @@ public class TesteJunit {
         carro2.setKm(234000);
         carro2.setAno("2016");
         carro2.setLocacaoDeOrigem(sede);
-        carro2.setClasseDeCarro(ClasseDeCarro.medio);
+        carro2.setClasseDeCarro(ClasseDeCarro.MEDIO);
         carro2.setSedeAtual(sede);
-        carro2.setSituacao(SituacaoCarro.foraDaOrigem);
+        carro2.setSituacao(SituacaoCarro.FORA_DA_ORIGEM);
         carro2.setValorDiaria(new BigDecimal(150));
 
         Carro carro3 = new Carro();
@@ -100,9 +98,9 @@ public class TesteJunit {
         carro3.setKm(234000);
         carro3.setAno("2016");
         carro3.setLocacaoDeOrigem(sede);
-        carro3.setClasseDeCarro(ClasseDeCarro.luxo);
+        carro3.setClasseDeCarro(ClasseDeCarro.LUXO);
         carro3.setSedeAtual(sede);
-        carro3.setSituacao(SituacaoCarro.alugado);
+        carro3.setSituacao(SituacaoCarro.ALUGADO);
         carro3.setValorDiaria(new BigDecimal(300));
 
         Carro carro4 = new Carro();
@@ -111,9 +109,9 @@ public class TesteJunit {
         carro4.setKm(234000);
         carro4.setAno("2016");
         carro4.setLocacaoDeOrigem(sede);
-        carro4.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro4.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro4.setSedeAtual(sede);
-        carro4.setSituacao(SituacaoCarro.alugado);
+        carro4.setSituacao(SituacaoCarro.ALUGADO);
         carro4.setValorDiaria(new BigDecimal(100));
 
         repositoryEndereco.salvaOuAtualiza(endereco);
@@ -125,7 +123,7 @@ public class TesteJunit {
         manager.flush();
 
 
-        List<Carro> carros = repositoryCarro.buscaPorClasse(ClasseDeCarro.compacto);
+        List<Carro> carros = repositoryCarro.buscaPorClasse(ClasseDeCarro.COMPACTO);
         for (Carro c : carros) {
             Assert.assertEquals("compacto", c.getClasseDeCarro().toString());
         }
@@ -159,9 +157,9 @@ public class TesteJunit {
         carro1.setKm(234000);
         carro1.setAno("2016");
         carro1.setLocacaoDeOrigem(sede);
-        carro1.setClasseDeCarro(ClasseDeCarro.luxo);
+        carro1.setClasseDeCarro(ClasseDeCarro.LUXO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(400));
 
         Carro carro2 = new Carro();
@@ -170,9 +168,9 @@ public class TesteJunit {
         carro2.setKm(234000);
         carro2.setAno("2016");
         carro2.setLocacaoDeOrigem(sede);
-        carro2.setClasseDeCarro(ClasseDeCarro.luxo);
+        carro2.setClasseDeCarro(ClasseDeCarro.LUXO);
         carro2.setSedeAtual(sede);
-        carro2.setSituacao(SituacaoCarro.foraDaOrigem);
+        carro2.setSituacao(SituacaoCarro.FORA_DA_ORIGEM);
         carro2.setValorDiaria(new BigDecimal(400));
 
         Carro carro3 = new Carro();
@@ -181,9 +179,9 @@ public class TesteJunit {
         carro3.setKm(234000);
         carro3.setAno("2016");
         carro3.setLocacaoDeOrigem(sede);
-        carro3.setClasseDeCarro(ClasseDeCarro.grande);
+        carro3.setClasseDeCarro(ClasseDeCarro.GRANDE);
         carro3.setSedeAtual(sede);
-        carro3.setSituacao(SituacaoCarro.disponivel);
+        carro3.setSituacao(SituacaoCarro.DISPONIVEL);
         carro3.setValorDiaria(new BigDecimal(300));
 
         Carro carro4 = new Carro();
@@ -192,9 +190,9 @@ public class TesteJunit {
         carro4.setKm(234000);
         carro4.setAno("2016");
         carro4.setLocacaoDeOrigem(sede);
-        carro4.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro4.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro4.setSedeAtual(sede);
-        carro4.setSituacao(SituacaoCarro.disponivel);
+        carro4.setSituacao(SituacaoCarro.DISPONIVEL);
         carro4.setValorDiaria(new BigDecimal(100));
 
         repositoryEndereco.salvaOuAtualiza(endereco);
@@ -206,7 +204,7 @@ public class TesteJunit {
         manager.flush();
 
 
-        List<Carro> carros = repositoryCarro.buscaPorClasse(ClasseDeCarro.luxo);
+        List<Carro> carros = repositoryCarro.buscaPorClasse(ClasseDeCarro.LUXO);
         for (Carro c : carros) {
             Assert.assertEquals("luxo", c.getClasseDeCarro().toString());
         }
@@ -253,9 +251,9 @@ public class TesteJunit {
         carro2.setKm(234000);
         carro2.setAno("2016");
         carro2.setLocacaoDeOrigem(sede1);
-        carro2.setClasseDeCarro(ClasseDeCarro.medio);
+        carro2.setClasseDeCarro(ClasseDeCarro.MEDIO);
         carro2.setSedeAtual(sede2);
-        carro2.setSituacao(SituacaoCarro.foraDaOrigem);
+        carro2.setSituacao(SituacaoCarro.FORA_DA_ORIGEM);
         carro2.setValorDiaria(new BigDecimal(150));
 
         CNH cnh = new CNH();
@@ -299,9 +297,9 @@ public class TesteJunit {
         carro2.setKm(234000);
         carro2.setAno("2016");
         carro2.setLocacaoDeOrigem(sede);
-        carro2.setClasseDeCarro(ClasseDeCarro.medio);
+        carro2.setClasseDeCarro(ClasseDeCarro.MEDIO);
         carro2.setSedeAtual(sede);
-        carro2.setSituacao(SituacaoCarro.foraDaOrigem);
+        carro2.setSituacao(SituacaoCarro.FORA_DA_ORIGEM);
         carro2.setValorDiaria(new BigDecimal(150));
 
         Carro carro1 = new Carro();
@@ -311,9 +309,9 @@ public class TesteJunit {
         carro1.setKm(234000);
         carro1.setAno("2016");
         //carro1.setLocacaoDeOrigem(sede2);
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(100));
 
         CNH cnh = new CNH();
@@ -442,9 +440,9 @@ public class TesteJunit {
         carro1.setModelo("Celta");
         carro1.setKm(234000);
         carro1.setAno("2016");
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(100));
 
         Cliente cliente2 = new Cliente();
@@ -496,9 +494,9 @@ public class TesteJunit {
         carro1.setModelo("Celta");
         carro1.setKm(234000);
         carro1.setAno("2016");
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(100));
 
         Assert.assertNotNull(sede.realizarReserva(cliente, carro1, 7));
@@ -539,9 +537,9 @@ public class TesteJunit {
         carro1.setModelo("Celta");
         carro1.setKm(234000);
         carro1.setAno("2016");
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(100));
 
         sede.realizarReserva(cliente, carro1, 7);
@@ -591,9 +589,9 @@ public class TesteJunit {
         carro1.setModelo("Celta");
         carro1.setKm(234000);
         carro1.setAno("2016");
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(100));
 
         Carro carro2 = new Carro();
@@ -602,9 +600,9 @@ public class TesteJunit {
         carro2.setModelo("Renault");
         carro2.setKm(251000);
         carro2.setAno("2018");
-        carro2.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro2.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro2.setSedeAtual(sede);
-        carro2.setSituacao(SituacaoCarro.disponivel);
+        carro2.setSituacao(SituacaoCarro.DISPONIVEL);
         carro2.setValorDiaria(new BigDecimal(100));
 
         Carro carro3 = new Carro();
@@ -613,9 +611,9 @@ public class TesteJunit {
         carro3.setModelo("Lamborgini");
         carro3.setKm(89000);
         carro3.setAno("2019");
-        carro3.setClasseDeCarro(ClasseDeCarro.luxo);
+        carro3.setClasseDeCarro(ClasseDeCarro.LUXO);
         carro3.setSedeAtual(sede);
-        carro3.setSituacao(SituacaoCarro.disponivel);
+        carro3.setSituacao(SituacaoCarro.DISPONIVEL);
         carro3.setValorDiaria(new BigDecimal(800));
 
         Cliente cliente = new Cliente();
@@ -698,9 +696,9 @@ public class TesteJunit {
         carro1.setModelo("Celta");
         carro1.setKm(234000);
         carro1.setAno("2016");
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(100));
 
         Reserva reserva = sede.realizarReserva(cliente, carro1, 8);
@@ -765,9 +763,9 @@ public class TesteJunit {
         carro1.setModelo("Celta");
         carro1.setKm(234000);
         carro1.setAno("2016");
-        carro1.setClasseDeCarro(ClasseDeCarro.compacto);
+        carro1.setClasseDeCarro(ClasseDeCarro.COMPACTO);
         carro1.setSedeAtual(sede);
-        carro1.setSituacao(SituacaoCarro.disponivel);
+        carro1.setSituacao(SituacaoCarro.DISPONIVEL);
         carro1.setValorDiaria(new BigDecimal(100));
 
         Reserva reserva = sede.realizarReserva(cliente, carro1, 8);

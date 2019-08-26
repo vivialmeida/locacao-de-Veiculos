@@ -146,13 +146,13 @@ public class Carro {
 
     public void alugarCarro(Reserva reserva) {
         //this.historicoDeReservas.add(reserva);
-        this.setSituacao(SituacaoCarro.alugado);
+        this.setSituacao(SituacaoCarro.ALUGADO);
         this.setLocacaoDeOrigem(reserva.getSedeOrigem());
     }
 
     public void tranferenciaDeVeiculo(Carro carro, Sede sede) throws Exception {
 
-        if (this.getSituacao().equals(SituacaoCarro.disponivel)) {
+        if (this.getSituacao().equals(SituacaoCarro.DISPONIVEL)) {
             this.setSedeAtual(sede);
             return;
         } else {

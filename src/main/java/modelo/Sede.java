@@ -2,7 +2,6 @@ package modelo;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -103,7 +102,7 @@ public class Sede {
     }
 
     public Reserva realizarReserva(Cliente cliente, Carro carro, int qtdDiarias) throws Exception {
-        if (cliente.getCnh().cnhDentroDaValidade() && (carro.getSituacao().equals(SituacaoCarro.disponivel) || carro.getSituacao().equals(SituacaoCarro.foraDaOrigem)) && (!cliente.reservaEmAberto()))
+        if (cliente.getCnh().cnhDentroDaValidade() && (carro.getSituacao().equals(SituacaoCarro.DISPONIVEL) || carro.getSituacao().equals(SituacaoCarro.FORA_DA_ORIGEM)) && (!cliente.reservaEmAberto()))
         {
                 Reserva reserva = new Reserva();
                 reserva.setDataDaLocacao(LocalDate.now());
@@ -111,8 +110,8 @@ public class Sede {
                 reserva.setSedeOrigem(this);
                 reserva.setCliente(cliente);
                 cliente.adicionarReserva(reserva);
-                carro.setSituacao(SituacaoCarro.alugado);
-                reserva.setStatusReserva(StatusReserva.aberta);
+                carro.setSituacao(SituacaoCarro.ALUGADO);
+                reserva.setStatusReserva(StatusReserva.ABERTA);
                 reserva.setCarro(carro);
                 carro.alugarCarro(reserva);
 
@@ -131,11 +130,11 @@ public class Sede {
     public void encerrarReserva (Reserva reserva){
 
         reserva.calculaValorDaLocação(this);
-        reserva.getCarro().setSituacao(SituacaoCarro.disponivel);
+        reserva.getCarro().setSituacao(SituacaoCarro.DISPONIVEL);
         reserva.setDataRetorno(LocalDate.now());
         reserva.getCarro().setSedeAtual(this);
         reserva.setSedeDevolucao(this);
-        reserva.setStatusReserva(StatusReserva.fechada);
+        reserva.setStatusReserva(StatusReserva.FECHADA);
         reserva.setValorTotal(reserva.calculaValorDaLocação(this).add(getMultaPorAtraso()));
     }
 
@@ -144,7 +143,7 @@ public class Sede {
     public List<Reserva> recuperarReservasEmAberto(){
         List <Reserva> reservas = new LinkedList<>();
         for (Reserva r : this.getReservas()) {
-            if(!r.getStatusReserva().equals(StatusReserva.aberta)){
+            if(!r.getStatusReserva().equals(StatusReserva.ABERTA)){
                 reservas.add(r);
             }
         }
